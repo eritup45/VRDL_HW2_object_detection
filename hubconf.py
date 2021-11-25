@@ -2,7 +2,8 @@
 
 Usage:
     import torch
-    model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True, channels=3, classes=80)
+    model = torch.hub.load('ultralytics/yolov5', 'yolov5s',
+                            pretrained=True, channels=3, classes=80)
 """
 
 from pathlib import Path
@@ -29,7 +30,8 @@ def create(name, pretrained, channels, classes):
     Returns:
         pytorch model
     """
-    config = Path(__file__).parent / 'models' / f'{name}.yaml'  # model.yaml path
+    config = Path(__file__).parent / 'models' / \
+        f'{name}.yaml'  # model.yaml path
     try:
         model = Model(config, channels, classes)
         if pretrained:
@@ -37,7 +39,8 @@ def create(name, pretrained, channels, classes):
             attempt_download(fname)  # download if not found locally
             ckpt = torch.load(fname, map_location=torch.device('cpu'))  # load
             state_dict = ckpt['model'].float().state_dict()  # to FP32
-            state_dict = {k: v for k, v in state_dict.items() if model.state_dict()[k].shape == v.shape}  # filter
+            state_dict = {k: v for k, v in state_dict.items() if model.state_dict()[
+                k].shape == v.shape}  # filter
             model.load_state_dict(state_dict, strict=False)  # load
             if len(ckpt['model'].names) == classes:
                 model.names = ckpt['model'].names  # set class names attribute
@@ -54,7 +57,7 @@ def yolov5s(pretrained=False, channels=3, classes=80):
     """YOLOv5-small model from https://github.com/ultralytics/yolov5
 
     Arguments:
-        pretrained (bool): load pretrained weights into the model, default=False
+        pretrained (bool): load pretrained weight into the model, default=False
         channels (int): number of input channels, default=3
         classes (int): number of model classes, default=80
 
@@ -68,7 +71,7 @@ def yolov5m(pretrained=False, channels=3, classes=80):
     """YOLOv5-medium model from https://github.com/ultralytics/yolov5
 
     Arguments:
-        pretrained (bool): load pretrained weights into the model, default=False
+        pretrained (bool): load pretrained weight into the model, default=False
         channels (int): number of input channels, default=3
         classes (int): number of model classes, default=80
 
@@ -82,7 +85,7 @@ def yolov5l(pretrained=False, channels=3, classes=80):
     """YOLOv5-large model from https://github.com/ultralytics/yolov5
 
     Arguments:
-        pretrained (bool): load pretrained weights into the model, default=False
+        pretrained (bool): load pretrained weight into the model, default=False
         channels (int): number of input channels, default=3
         classes (int): number of model classes, default=80
 
@@ -96,7 +99,7 @@ def yolov5x(pretrained=False, channels=3, classes=80):
     """YOLOv5-xlarge model from https://github.com/ultralytics/yolov5
 
     Arguments:
-        pretrained (bool): load pretrained weights into the model, default=False
+        pretrained (bool): load pretrained weight into the model, default=False
         channels (int): number of input channels, default=3
         classes (int): number of model classes, default=80
 
@@ -107,7 +110,8 @@ def yolov5x(pretrained=False, channels=3, classes=80):
 
 
 if __name__ == '__main__':
-    model = create(name='yolov5s', pretrained=True, channels=3, classes=80)  # example
+    model = create(name='yolov5s', pretrained=True,
+                   channels=3, classes=80)  # example
     model = model.fuse().autoshape()  # for PIL/cv2/np inputs and NMS
 
     # Verify inference

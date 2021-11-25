@@ -6,7 +6,7 @@ import glob
 import natsort
 
 test_image_path = 'data/svhn/test/'
-filepath = 'runs/detect/exp26_x_320/labels/'
+filepath = 'runs/detect/exp30/labels/'
 filenames = natsort.natsorted(glob.glob(filepath + '/*.txt'))
 fileIDs = [int((f.split('/')[-1])[:-4]) for f in filenames]
 length = len(fileIDs)

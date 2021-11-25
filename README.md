@@ -117,7 +117,7 @@ python train.py --img 320 --batch 32 --epochs 80 --data svhn.yaml --weights yolo
 
 - detect test data
 ```
-python detect.py --source data/svhn/test/ --weights runs/train/exp2/weights/best.pt --conf 0.005 --save-txt --save-conf
+python detect.py --source data/svhn/test/ --weights runs/train/exp2/weights/best.pt --conf 0.0001 --save-txt --save-conf
 ```
 
 - Make Submission: output json format. The result will be stored in "./answer.json". (In combine.py, modify path corresponding to your detected labels.)
@@ -138,7 +138,9 @@ python combine.py
 ```
 
 ### Results
-Test score (mAP:0.5:0.95): 0.38221 (60)
+* Test score (mAP:0.5:0.95): 0.38335 (59)
+* Inference time per image:  0.0483 [(Run on colab)](https://colab.research.google.com/drive/1UL0dq5zKlkkNb5sz1SPHBrOUkgNL1WLg?usp=sharing)
+![](https://i.imgur.com/YNmDajs.png)
 
 ### Report
 https://hackmd.io/@Bmj6Z_QbTMy769jUvLGShA/VRDL_HW2
