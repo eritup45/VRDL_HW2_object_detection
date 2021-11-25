@@ -7,6 +7,9 @@ Object detection of street view house numbers, which contains two parts:
 
 The giving SVHN dataset contains 33402 images for training and 13068 images for testing. This project uses the YOLOv5 pre-trained model to detect the number.
 
+![](https://i.imgur.com/PeRqOOs.jpg)
+
+
 ### Environment
 - Python 3.7
 - Pytorch 1.6.0
