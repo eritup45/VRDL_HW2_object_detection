@@ -110,12 +110,14 @@ python train.py --img 320 --batch 32 --epochs 80 --data svhn.yaml --weights yolo
 ```
 
 ### Testing
+- The weights I train: [Google Drive](https://drive.google.com/file/d/1df4qkbrfM_jXmei4JxRf-jy0CR4Kws0O/view?usp=sharing)
+
 - detect test data
 ```
-python detect.py --source data/svhn/test/ --weights runs/train/exp18/weights/best.pt --conf 0.005 --save-txt --save-conf
+python detect.py --source data/svhn/test/ --weights runs/train/exp2/weights/best.pt --conf 0.005 --save-txt --save-conf
 ```
 
-- Make Submission: output json format. The result will be stored in "./answer.json". (Modify combine.py corresponding to your detect labels.)
+- Make Submission: output json format. The result will be stored in "./answer.json". (In combine.py, modify path corresponding to your detected labels.)
 ```
 python combine.py
 ```
